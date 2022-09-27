@@ -13,12 +13,10 @@ namespace DeviceManagement_WebApp.Controllers
 {
     public class CategoriesController : Controller
     {
-        private readonly ConnectedOfficeContext _context;
         private readonly ICategoriesRepository _categoriesRepository;
 
-        public CategoriesController(ConnectedOfficeContext context, ICategoriesRepository categoriesrepository)
+        public CategoriesController(ICategoriesRepository categoriesrepository)
         {
-            _context = context;
             _categoriesRepository = categoriesrepository;
         }
 
@@ -81,8 +79,6 @@ namespace DeviceManagement_WebApp.Controllers
         }
 
         // POST: Categories/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, [Bind("CategoryId,CategoryName,CategoryDescription,DateCreated")] Category category)
